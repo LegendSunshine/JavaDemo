@@ -15,9 +15,11 @@ import java.io.IOException;
 import java.util.*;
 
 /**
- * @ClassName qrcodeController
- * @Date 2023/3/26 10:05
- * @Author legend
+ * 类名称: QrcodeController
+ * 类描述: qrcode控制器
+ *
+ * @author legend
+ * @since 2023/08/17
  */
 
 @Slf4j
@@ -38,7 +40,7 @@ public class QrcodeController {
         File zipFile = new File(url);
         // 调用压缩方法
         Integer total = qrcodeService.zipFiles(fileList, zipFile);
-        return new ResponseResult<String>("成功"+total+"条","ok",200);
+        return new ResponseResult<>("成功"+total+"条","ok",200);
     }
 
     @PostMapping("/create/qrcode")

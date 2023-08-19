@@ -4,8 +4,6 @@ package com.qrcode.application;
 
 import com.qrcode.until.QRCodeUtils;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.io.IOUtils;
-import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.stereotype.Service;
 
 import javax.imageio.ImageIO;
@@ -20,9 +18,11 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 /**
- * @ClassName QrcodeService
- * @Date 2023/3/26 10:09
- * @Author legend
+ * 类名称: QrcodeService
+ * 类描述: qrcode服务
+ *
+ * @author legend
+ * @since 2023/08/17
  */
 
 @Service
@@ -37,7 +37,7 @@ public class QrcodeService {
         ZipOutputStream zipOutputStream = new ZipOutputStream(fileOutputStream);
                 int total =0;
         try {
-            if (srcFiles.size() != 0) {
+            if (!srcFiles.isEmpty()) {
                 // 判断压缩后的文件存在不，不存在则创建
                 if (!zipFile.exists()) {
                     zipFile.createNewFile();
@@ -118,8 +118,8 @@ public class QrcodeService {
                     }
                     for (Map.Entry<String, byte[]> entry : hashMap.entrySet()) {
                         // 获取到oss的图片路径,使用上传到Oss放开这两行代码
-//                        URL url = new URL(entry.getValue());
-//                        imageInputStream = url.openStream();
+                        // URL url = new URL(entry.getValue());
+                        // imageInputStream = url.openStream();
 
                         imageInputStream= new ByteArrayInputStream(entry.getValue());
                         //二维码图片名称
@@ -141,7 +141,7 @@ public class QrcodeService {
                     if (imageInputStream != null) {
                         imageInputStream.close();
                     }
-                    outputStream.close();
+                    outputStream.flush();
                 }
             } catch (Exception e) {
                 //捕获到异常就回滚
@@ -152,12 +152,9 @@ public class QrcodeService {
     }
 
     /**
-     * @description: TODO 将图片转换成字节数组
-     * @param:
+     *  将图片转换成字节数组
+     *
      * @param bImg 图片流
-     * @return:
-     * @author legend
-     * @date: 2023/5/14 15:29
      */
 
     private byte[] imageToBytes(BufferedImage bImg) {

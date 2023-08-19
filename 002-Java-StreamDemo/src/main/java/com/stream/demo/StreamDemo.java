@@ -1,11 +1,7 @@
 package com.stream.demo;
 
-
-import lombok.extern.slf4j.Slf4j;
-
 import java.math.BigDecimal;
 import java.util.*;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 /**
