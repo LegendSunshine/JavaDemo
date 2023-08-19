@@ -1,5 +1,7 @@
 package com.stream.demo;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -11,6 +13,7 @@ import java.util.stream.Collectors;
  * @author legend
  * @since 2023/7/8
  */
+@Slf4j
 public class StreamDemo {
 
     /**
