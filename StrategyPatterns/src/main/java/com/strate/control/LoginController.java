@@ -1,7 +1,6 @@
 package com.strate.control;
 
 import com.strate.config.FactoryConfig;
-import com.strate.service.ILoginService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;

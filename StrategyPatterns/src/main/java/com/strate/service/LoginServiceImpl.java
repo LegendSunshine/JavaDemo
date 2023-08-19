@@ -31,8 +31,4 @@ public class LoginServiceImpl implements ILoginService{
 
         return OTHER_TYPE.getTypeCode();
     }
-
-    private void loginMethod(String username){
-        log.debug("用户：{}登录了",username);
-    }
 }

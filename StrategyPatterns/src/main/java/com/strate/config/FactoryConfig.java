@@ -1,7 +1,6 @@
 package com.strate.config;
 
 import com.strate.service.ILoginService;
-import javafx.application.Application;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;
@@ -45,7 +44,7 @@ public class FactoryConfig implements InitializingBean,ApplicationContextAware {
     }
 
     @Override
-    public void afterPropertiesSet() throws Exception {
+    public void afterPropertiesSet(){
         //获取某一接口的所有实现类
         application.getBeansOfType(ILoginService.class).values().forEach(map -> LOGIN_MAP.put(map.getLoginType(),map));
     }

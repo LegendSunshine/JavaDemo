@@ -4,7 +4,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-import static com.strate.common.TypeEnum.OTHER_TYPE;
 import static com.strate.common.TypeEnum.PHONE_TYPE;
 
 /**
