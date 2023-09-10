@@ -15,3 +15,4 @@ server:
 swagger:
   # 是否开启swagger
   enabled: true
+spring.data.m
