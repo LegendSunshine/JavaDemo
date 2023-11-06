@@ -1,0 +1,5 @@
+server:
+  port: 8080
+sign:
+    expireTime: 60
+    secretKey: aaaqqq

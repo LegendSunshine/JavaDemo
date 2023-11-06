@@ -1,7 +1,11 @@
 package com.sign.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.sign.config.CheckSign;
+import com.sign.service.SignService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 类名称: SignController
@@ -12,5 +16,17 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/v1/sign")
+@RequiredArgsConstructor
 public class SignController {
+
+    private final SignService signService;
+
+    @PostMapping("/checkSign/{name}/{age}")
+    @CheckSign
+    public ResponseEntity postTestPdf(
+            @PathVariable("name") String name,
+            @PathVariable("age") String age
+    ) {
+        return ResponseEntity.ok(signService.add(name,age));
+    }
 }
