@@ -145,7 +145,7 @@ public class QrcodeService {
                 }
             } catch (Exception e) {
                 //捕获到异常就回滚
-//                TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+//                Transa ctionAspectSupport.currentTransactionStatus().setRollbackOnly();
                 log.error("导出异常",e);
             }
 
