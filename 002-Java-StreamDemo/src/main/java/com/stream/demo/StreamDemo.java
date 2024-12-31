@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * 类名称:StreamDemo
@@ -13,7 +14,6 @@ import java.util.stream.Collectors;
  * @author legend
  * @since 2023/7/8
  */
-@Slf4j
 public class StreamDemo {
 
     /**
@@ -27,14 +27,14 @@ public class StreamDemo {
 
         /* ifPresent是Java 8中的一个非常实用的函数，可以帮助我们优雅地处理可能为空的对象。
          * 具体来说，它可以判断对象是否为null，如果不为null，就执行指定的操作。*/
-        str.map(String::valueOf).ifPresent(s -> System.out.println("结果:"+decimal.multiply(new BigDecimal(s))));
+        str.map(String::valueOf).ifPresent(s -> System.out.println("结果:" + decimal.multiply(new BigDecimal(s))));
     }
 
     /*
      * 使用stream进行分组
      */
 
-    public static void streamGroup(List<String> strList){
+    public static void streamGroup(List<String> strList) {
 
         Map<Integer, List<String>> listMap = strList.stream().collect(Collectors.groupingBy(String::length));
 
@@ -42,16 +42,29 @@ public class StreamDemo {
 
     }
 
+    public static void spiltString(String str) {
+        List<Integer> collect = Stream.of(str.split(",")).map(Integer::valueOf).collect(Collectors.toList());
+        System.out.println(collect);
+    }
+
     public static void main(String[] args) {
         String str = "23.66";
         streamOptional(str);
         streamOptional(null);
 
-        List<String> strList  = new ArrayList<>();
+        List<String> strList = new ArrayList<>();
         strList.add("apple");
         strList.add("aboard");
         strList.add("brand");
         strList.add("car");
         streamGroup(strList);
+
+        Stream<Integer> stream = Stream.of(1, 2, 3, 4, 5, 6);
+        System.out.println("stream:" + stream.count());
+        Stream<Integer> stream2 = Stream.iterate(0,x->x + 2).limit(6);
+        stream2.forEach(System.out::println); // 0 2 4 6 8 10
+
+        Stream<Double> stream3 = Stream.generate(Math::random).limit(2);
+        stream3.forEach(System.out::println);
     }
 }
