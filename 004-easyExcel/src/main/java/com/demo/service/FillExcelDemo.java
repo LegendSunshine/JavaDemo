@@ -76,7 +76,7 @@ public class FillExcelDemo {
         // 使用预处理后的模板进行填充
         try(ExcelWriter excelWriter = EasyExcel.write(exportExcelPath).withTemplate(preparedTemplate).build();) {
             WriteSheet writeSheet = EasyExcel.writerSheet()
-                    .registerWriteHandler(new CustomSheetWriteHandler(rowNum))
+                    .registerWriteHandler(new CustomSheetWriteHandler(rowNum,exportArggate.getList().size()))
                     .build();
             // 写入数据
             excelWriter.fill(exportArggate.getExcelFillExportDataBO(), writeSheet);
@@ -92,6 +92,12 @@ public class FillExcelDemo {
         ExportArggate exportArggate = new ExportArggate();
         ExcelFillExportDataBO excelFillExportDataBO = new ExcelFillExportDataBO();
         excelFillExportDataBO.setTitle("标题");
+        excelFillExportDataBO.setOne(1);
+        excelFillExportDataBO.setTwo(2);
+        excelFillExportDataBO.setThree(3);
+        excelFillExportDataBO.setFour(4);
+        excelFillExportDataBO.setFive(5);
+        excelFillExportDataBO.setSix(6);
         List<ExcelFillExportDataListBO> excelFillExportDataListBOS = new ArrayList<>();
         for (int i = 0; i < 12; i++) {
             ExcelFillExportDataListBO excelFillExportDataListBO = new ExcelFillExportDataListBO();
